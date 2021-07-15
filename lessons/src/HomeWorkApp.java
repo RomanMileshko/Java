@@ -1,43 +1,43 @@
 public class HomeWorkApp {
     public static void main(String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumbers();
+        System.out.println(within10and20(15, 3));
+        isPositiveOrNegative(10);
+        System.out.println(isNegative(6));
+        printWordNTimes("Hello !", 5);
+        System.out.println(isLeapYear(2100));
     }
-    public static void printThreeWords() {
-        System.out.println("Orange");
-        System.out.println("Banana");
-        System.out.println("Apple");
+
+    public static boolean isLeapYear(int x) {
+        if (x % 4 == 0) {
+            if ((x % 100 != 0) || (x % 400 == 0))
+                return true;
+        }
+        return false;
     }
-    public static void checkSumSign() {
-        int a = 2;
-        int b = 5;
+
+    public static boolean within10and20(int x1, int x2) {
         int sum;
-        sum = a + b;
-        if (sum >= 0) {
-            System.out.println("Сумма положительная");
+        sum = x1 + x2;
+        if(sum >= 10 && sum <= 20)
+            return true;
+        else return false;
+    }
+    public static void isPositiveOrNegative(int x) {
+        if (x >= 0) {
+            System.out.println("Positive");
         } else {
-            System.out.println("Сумма отрицательная");
+            System.out.println("Negative");
         }
     }
-    public static void printColor() {
-        int value = 60;
-        if (value <= 0) {
-            System.out.println("Красный");
-        } else if (value > 0 && value <= 100) {
-            System.out.println("Желтый");
-        } else {
-            System.out.println("Зеленый");
+    public static boolean isNegative(int x) {
+        if (x < 0) {
+            return true;
         }
+        return false;
     }
-    public static void compareNumbers() {
-        int a = 10;
-        int b = 25;
-        if (a >= b) {
-            System.out.println("a>=b");
-        } else {
-            System.out.println("a<b");
+    public static void printWordNTimes(String word, int times) {
+        for (int i = 1; i <= times; i++) {
+            System.out.println(word);
         }
     }
 }
