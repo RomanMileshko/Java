@@ -24,13 +24,11 @@ public class HomeWorkApp {
         plate.increaseFood(10);
         plate.info();
 
-//  Кормим только голодных котов
+//  Кормим еще раз
         for (Cat cat: cats) {
-            if (cat.getHungry()) {
-                cat.eat(plate);
-                cat.info();
-                plate.info();
-            }
+            cat.eat(plate);
+            cat.info();
+            plate.info();
         }
     }
 }
