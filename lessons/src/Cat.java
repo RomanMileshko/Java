@@ -1,41 +1,28 @@
-public class Cat extends Animal {
-    static int countOfCat;
-    int limitRun;
-    int limitSwim;
+public class Cat {
+    private final String name;
+    private final int appetite;
+    private boolean satiety;
 
-    public Cat(String name, int limitRun) {
-        super(name);
-        this.limitRun = limitRun;
-        this.limitSwim = 0;
-        countOfCat++;
+    public Cat(String name, int appetite) {
+        this.name = name;
+        this.appetite = appetite;
+        this.satiety = false;
+    }
+    public void eat(Plate p) {
+        satiety = p.decreaseFood(appetite);
     }
 
-    public Cat(String name, int limitRun, int limitSwim) {
-        super(name);
-        this.limitRun = limitRun;
-        this.limitSwim = limitSwim;
-        countOfCat++;
+    public void info() {
+        if (satiety) System.out.printf("The cat %s is full !!!%n", name);
+        else System.out.printf("The cat %s is not full !!!%n", name);
     }
 
-    @Override
-    public void run(int len) {
-        int dist;
-        if (len > limitRun) dist = limitRun; else dist = len;
-        System.out.printf("%s (%s) пробежал %d метров из %d.%n", getName(), this, dist, len);
+    public boolean getSatiety() {
+        return satiety;
     }
 
-    @Override
-    void swim(int len) {
-        int dist;
-        if (limitSwim != 0) {
-            if (len > limitSwim) dist = limitSwim;
-            else dist = len;
-            System.out.printf("%s (%s) проплыл %d метров из %d.%n", getName(), this, dist, len);
-        } else
-            System.out.printf("%s (%s) не умеет плавать.%n", getName(), this);
+    public boolean getHungry() {
+        return !getSatiety();
     }
 
-    public static int getCountOfCat() {
-        return countOfCat;
-    }
 }
